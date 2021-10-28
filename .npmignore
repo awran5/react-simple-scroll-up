@@ -1,0 +1,10 @@
+example
+src
+.editorconfig
+.eslintignore
+.eslintrc.js
+.gitignore
+.prettierrc
+rollup.*
+screenshot.gif
+tsconfig.json
