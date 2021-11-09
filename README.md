@@ -46,7 +46,7 @@ const MyComponent = () => {
 | Prop               |        Type         | Options  | Description                                                                          |         Default          |
 | ------------------ | :-----------------: | -------- | ------------------------------------------------------------------------------------ | :----------------------: |
 | `size`             |       number        | Optional | Set button width and height (in pixels)                                              |           `50`           |
-| `offsetTop`        |       string        | Optional | Show button after number of pixels that document has scrolled vertically             |          `100`           |
+| `offsetTop`        |       number        | Optional | Show button after number of pixels that document has scrolled vertically             |          `100`           |
 | `bgColor`          |       string        | Optional | Button background color                                                              |    `rgb(0 0 0 / 75%)`    |
 | `strokeWidth`      |       number        | Optional | Scroll progess bar width (in pixels)                                                 |           `4`            |
 | `strokeFillColor`  |       string        | Optional | Scroll progess bar fill color                                                        |    `rgb(0 0 0 / 50%)`    |
