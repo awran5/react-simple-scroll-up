@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback, useEffect, useReducer } from 'react'
+import React, { useMemo, useCallback, useEffect, useReducer, ReactNode } from 'react'
 
 // Reducer
 type State = {
@@ -28,7 +28,7 @@ export interface ScrollToTopProps {
   strokeWidth?: number
   strokeFillColor?: string
   strokeEmptyColor?: string
-  symbol?: string
+  symbol?: string | ReactNode
   symbolSize?: number
   symbolColor?: string
   /**
@@ -109,6 +109,9 @@ export const ScrollToTop = ({
         transition: 'visibility .3s linear, opacity .3s linear',
         cursor: 'pointer',
         userSelect: 'none',
+        display: 'grid',
+        placeItems: 'center',
+        gridTemplateAreas: '"inner-div"',
         ...style
       }}
       onClick={scrollToTop}
@@ -119,7 +122,8 @@ export const ScrollToTop = ({
       <svg
         style={{
           display: 'block',
-          transform: 'rotate(-90deg)'
+          transform: 'rotate(-90deg)',
+          gridArea: 'inner-div'
         }}
         width={size}
         height={size}
@@ -143,18 +147,31 @@ export const ScrollToTop = ({
           strokeDashoffset={progress}
         />
         {/* Symbol inside */}
-        <text
-          x={center}
-          y={center}
-          textAnchor='middle'
-          dominantBaseline='middle'
-          transform={`rotate(90, ${center}, ${center})`}
-          fill={symbolColor}
-          fontSize={symbolSize}
+        {typeof symbol === 'string' &&
+          <text
+            x={center}
+            y={center}
+            textAnchor='middle'
+            dominantBaseline='middle'
+            transform={`rotate(90, ${center}, ${center})`}
+            fill={symbolColor}
+            fontSize={symbolSize}
+          >
+            {symbol}
+          </text>
+        }
+      </svg>
+
+      {typeof symbol !== 'string' && (
+        <div
+          style={{
+            gridArea: 'inner-div',
+            zIndex: 10
+          }}
         >
           {symbol}
-        </text>
-      </svg>
+        </div>
+      )}
     </div>
   )
 }
