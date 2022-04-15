@@ -1,3 +1,5 @@
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ScrollToTop } from 'react-simple-scroll-up'
 
 const App = () => {
@@ -122,7 +124,12 @@ const App = () => {
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
       </div>
-      <ScrollToTop onScrollEnd={onScrollEnd} onScrolling={onScrolling} />
+      <ScrollToTop
+        onScrollEnd={onScrollEnd}
+        onScrolling={onScrolling}
+        symbol={<FontAwesomeIcon icon={faArrowUp} color="#fff" />}
+        // or symbol="⬆"
+      />
     </div>
   )
 }
