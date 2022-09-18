@@ -119,7 +119,7 @@ export const ScrollToTop = ({
     dispatch({
       type: 'scrolling',
       payload: {
-        visible: scrollTop > offsetTop,
+        visible: scroll > offsetTop,
         offset: dasharray - dasharray * percentage
       }
     })
