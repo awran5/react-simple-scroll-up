@@ -22,25 +22,59 @@ function reducer(state: State, action: Action): State {
 }
 
 export interface ScrollToTopProps {
+  /**
+   * Set button width and height (in pixels) */
   size?: number
+  /**
+   * Show button after number of pixels that document has scrolled vertically */
   offsetTop?: number
+  /**
+   * Button background color
+   */
   bgColor?: string
+  /**
+   * Scroll progess bar width (in pixels)
+   */
   strokeWidth?: number
+  /**
+   * Scroll progess bar fill color
+   */
   strokeFillColor?: string
+  /**
+   * Scroll progess bar empty color
+   */
   strokeEmptyColor?: string
+  /**
+   * Use any HTML `Symbols` by simply copy/paste it OR any custom element, e.g. FontAwesomeIcon
+   */
   symbol?: string | ReactNode
+  /**
+   * Symbol font size (in pixels). Only applies when symbol is a string.
+   */
   symbolSize?: number
+  /**
+   * Symbol color.
+   */
   symbolColor?: string
+  /**
+   * OnClick callback function that is triggered when button is clicked
+   */
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
   /**
-   * `onScrolling` Callback function that is triggered while scrolling with `value` passed
+   * A Callback function that is triggered while scrolling with `value` passed
    */
   onScrolling?: (offsetTop: number) => void
   /**
-   * `onScrollEnd` Callback function that is triggered when scroll is ended
+   * A callback function that is triggered when scroll is ended
    */
   onScrollEnd?: () => void
+  /**
+   * CSS class name
+   */
   className?: string
+  /**
+   * CSS inline style
+   */
   style?: React.CSSProperties
 }
 
