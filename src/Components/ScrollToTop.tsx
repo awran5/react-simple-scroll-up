@@ -31,6 +31,7 @@ export interface ScrollToTopProps {
   symbol?: string | ReactNode
   symbolSize?: number
   symbolColor?: string
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
   /**
    * `onScrolling` Callback function that is triggered while scrolling with `value` passed
    */
@@ -53,6 +54,7 @@ export const ScrollToTop = ({
   symbol = '⮙',
   symbolSize = 20,
   symbolColor = '#fff',
+  onClick,
   onScrolling,
   onScrollEnd,
   className = 'to-top-progress',
@@ -69,10 +71,16 @@ export const ScrollToTop = ({
 
   const scrollListener = useCallback(() => {
     const { clientHeight, scrollHeight, scrollTop } = document.documentElement
-    const percentage = scrollTop / (scrollHeight - clientHeight)
+    const { innerHeight, scrollY, pageYOffset } = window
 
-    if (percentage === 1) if (onScrollEnd) onScrollEnd()
-    if (onScrolling) onScrolling(scrollTop)
+    const scroll = pageYOffset || scrollTop || scrollY
+    const percentage = scroll / (scrollHeight - clientHeight)
+
+    if (innerHeight + scroll >= scrollHeight) {
+      if (onScrollEnd) onScrollEnd()
+    } else if (scroll > 0) {
+      if (onScrolling) onScrolling(scrollY)
+    }
 
     dispatch({
       type: 'scrolling',
@@ -89,7 +97,8 @@ export const ScrollToTop = ({
     return () => window.removeEventListener('scroll', scrollListener)
   }, [scrollListener])
 
-  const scrollToTop = () => {
+  const scrollToTop = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (onClick) onClick(event)
     window.scroll({
       top: 0,
       left: 0,
@@ -147,7 +156,7 @@ export const ScrollToTop = ({
           strokeDashoffset={progress}
         />
         {/* Symbol inside */}
-        {typeof symbol === 'string' &&
+        {typeof symbol === 'string' && (
           <text
             x={center}
             y={center}
@@ -159,7 +168,7 @@ export const ScrollToTop = ({
           >
             {symbol}
           </text>
-        }
+        )}
       </svg>
 
       {typeof symbol !== 'string' && (
