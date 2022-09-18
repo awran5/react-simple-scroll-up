@@ -14,12 +14,11 @@
     "node": ">=14"
   },
   "scripts": {
-    "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "clean": "rm -rf dist",
     "start": "rollup -cw --exports auto",
     "build": "rollup -c --exports auto",
     "deploy": "gh-pages -d storybook-static",
-    "publish": "npm publish",
+    "publish": "yarn build && npm publish",
     "sb": "start-storybook -p 6006",
     "changelog": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
     "build-storybook": "build-storybook"
