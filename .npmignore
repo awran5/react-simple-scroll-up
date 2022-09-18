@@ -1,8 +1,7 @@
 example
 src
+src/stories
 .editorconfig
-.eslintignore
-.eslintrc.js
 .gitignore
 .prettierrc
 rollup.*
