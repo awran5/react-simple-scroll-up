@@ -18,7 +18,6 @@
     "start": "rollup -cw --exports auto",
     "build": "rollup -c --exports auto",
     "deploy": "gh-pages -d storybook-static",
-    "publish": "yarn build && npm publish",
     "sb": "start-storybook -p 6006",
     "changelog": "auto-changelog -p --template keepachangelog && git add CHANGELOG.md",
     "build-storybook": "build-storybook"
