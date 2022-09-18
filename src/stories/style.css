@@ -1,0 +1,32 @@
+.App {
+  font-family: sans-serif;
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dummy-content p {
+  line-height: 1.8;
+  display: inline;
+  background: rgba(0, 0, 0, 0.12);
+  color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border-radius: 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.dummy-content p + p:before {
+  visibility: hidden;
+  content: '.';
+  display: block;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  padding: 5px;
+  background-color: #fff;
+}

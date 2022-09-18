@@ -1,3 +1,1 @@
-import { ScrollToTop } from './Components/ScrollToTop'
-
-export { ScrollToTop }
+export * from './Components/ScrollToTop'
